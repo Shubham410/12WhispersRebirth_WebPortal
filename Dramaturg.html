@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="shortcut icon" href="images/favicon.png">
+        <title>12 Line-Wonder University Admin</title>
+
+       		 <!-- Bootstrap CSS CDN -->
+       <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        	<!-- Font Awesome -->
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+        	<!-- Our Custom CSS -->
+        <link rel="stylesheet" href="css/collapseStyle.css">
+        	<!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+       
+       	<style>
+	       	.loading {
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			position: fixed;
+			display: block;
+			opacity: 0.7;
+			background-color: #fff;
+			z-index: 99;
+			text-align: center;
+			background: url(images/ajax-loader.gif) 50% 50% no-repeat
+				rgba(0, 0, 0, 0.6);
+			}
+			
+			#Teacher_listSidebar a::before{
+				content:'';
+			}
+			#add_teacherSidebar a::before{
+				content:'';
+			}
+       	</style>
+       
+    </head>
+<body>
+
+		<div class="wrapper">
+		
+		 <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div id="dismiss">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </div>
+
+                <div class="sidebar-header">
+                    <h3 class="f-roboBold">12 Line Wonder</h3>
+                </div>
+
+               <ul class="list-unstyled components f-roboRegular" style="padding:0;">
+
+                   <!--  <li id="" class="active">
+                        <a href="#university_dashboard" data-toggle="tab">Dashboard</a>
+                    </li> -->
+
+                    <li id="" class="colps active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                        Add
+                        </a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li id="add_teacherSidebar"><a href="#addTeacher_section" data-toggle="tab">Teachers</a></li>
+                        </ul>
+                    </li>
+					
+					<li id="Teacher_listSidebar" >
+                        <a href="#teacher_list_section" data-toggle="tab">Teachers List</a>
+                    </li>
+
+
+<!-- 
+                    <li id="" class="colps">
+
+
+                        <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false">
+                        Delete
+                        </a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu1">
+                            <li><a href="#delete_teacher_section" data-toggle="tab">Teachers</a></li>
+                        </ul>
+                    </li> -->
+					
+                </ul>
+
+            </nav>
+		
+		    
+            <!-- Page Content Holder -->
+            <div id="content">
+            
+             <div class="container-fluid headerBg">
+				<div class="ptb-10">	
+					<div class="row">
+					
+						<div class="col-md-1 col-xs-3 text-center">
+					
+						  <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+							<i class="glyphicon glyphicon-align-left"></i> 
+								<!-- <span>Select Option</span>  -->
+						  </button>	
+				
+						</div>	
+						
+						<div class="col-md-10 col-xs-6 text-center">
+							<h4 class="portal_heading f-roboBold">Welcome to 12 Line Wonder</h4>
+							<h4 class="uniAdmin_name" style="color:#ffffff;"></h4> 
+						</div>
+						
+						<div class="col-md-1 col-xs-3 text-center">
+							<h5 class="logout_btn">Logout</h5>
+						</div>
+							
+					</div>
+					
+				  </div>
+				</div> 
+            
+            	<div class="tab-content">
+            	
+               <!--  <section id="university_dashboard" class="tab-pane active">
+                	<div class="row">
+						  <div class="col-md-12">
+							<div class="text-center p-15">
+								<h3>Dashboard</h3>
+							</div>
+						  </div>
+					  </div>
+                </section> -->
+              
+                <!-- --------------------- Section for add teacher ------------------ -->
+              
+                <section id="addTeacher_section" class="tab-pane active">
+                
+                	   <div class="container">
+	                		<div class="row">
+							  <div class="col-md-12">
+								<div class="text-center p-15">
+									<h3 class="f-roboBold">Dramaturg</h3>
+								</div>
+							  </div>
+						  	</div>
+					   </div>
+                		
+                		<div>
+                			<div class="container">
+                				<div class="row">
+                					<div class=" col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+                						<form id="add_teacher_form">
+                							
+                							<div class="form-group text-center mt-25">
+					  							<input id="teacher_name" name="teacher_name" class="form-control" type="text" placeholder="Teacher Full Name" />
+					  						</div>
+                							
+                							<div class="form-group text-center mt-25">
+					  							<input id="teacher_email" name="teacher_email" class="form-control" type="email" placeholder="Teacher Email Id" />
+					  						</div>
+                							
+                							<div class="form-group text-center mt-25">
+					  							<input id="teacher_uniqueId" name="teacher_uniqueId" class="form-control" type="text" placeholder="Teacher Unique Id" />
+					  						</div>
+					  					
+						  					<div class="form-group text-center mt-25">
+						  						<input id="teacher_password" name="teacher_password" class="form-control" type="password" placeholder="Teacher Password" />
+						  					</div>
+						  				
+						  					<div class="text-center">
+						  					 <p> [ OR ] </p>
+						  					</div>
+						  					
+						  					<div class="form-group file-upload mt-25">
+						  						<input id="teacher_file" name="teacher_file" class="form-control" type="file" accept=".csv" placeholder="Teacher List File" style="display:none;" />
+						  						<p id="fileName" class="file-name1"> File Name...</p>
+						  					</div> 
+					  						
+					  						<div class="text-center mt-25">
+					  				    
+					  				       		<a id="add_TeacherBtn" class="btn btn-default btn-common" role="button" onclick="" style="margin-right:10px">Save</a>
+<!-- 					  				       		<a class="btn btn-default btn-common" role="button" onclick="resetAddTeacher()" style="margin-right:10px">Create New Teacher</a>
+ -->					  				       		<label id="upload_teacherfile" class="btn btn-default btn-common" for="teacher_file" role="button" onclick="">Import Teachers List</label>
+					  				    	
+					  				    	</div>
+					  					
+                						</form>
+                					</div>
+                				</div>
+                			</div>
+                		</div>
+                	
+                	    <!-- add teacher error modal --> 
+			              <div id="AddTeacherErr_Modal" class="modal fade" role="dialog">
+							  <div class="modal-dialog">
+							
+							    <!-- Modal content-->
+							    <div class="modal-content">
+							      <div class="modal-header" style="border:none;">
+							        <div>
+							        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+							        </div>
+							      </div>
+							      <div class="modal-body">
+							        <p id="AddTeacher_ErrMsg"></p> 
+							      </div>
+							      
+							    </div>
+							
+							  </div>
+						  </div> 
+                
+                </section>
+                <!-- ---------------------------------- Display teacher list ------------------------------ -->
+               
+                <section id="teacher_list_section" class="tab-pane">
+                	
+                	<div class="row">
+						  <div class="col-md-12">
+							<div class="text-center p-15">
+								<h3 class="f-roboBold">Display Teacher Lists</h3>
+							</div>
+						  </div>
+					</div>
+					
+					<div class="container">
+						<div class="row">
+								<div class="col-md-12">
+									<div class="table-responsive table_border">
+									   <table id="TeacherList_Table" class="table table-striped  table-responsive" cellspacing="0">
+							            <!-- display teacher list table -->
+									   </table>
+									</div>
+								</div>
+						</div>
+					</div>
+                	
+                	<!-- Teacher Fetch Modal -->
+                	<div id="" class="fetchTeacher_Err_modal modal fade" role="dialog">
+						  <div class="modal-dialog">
+						
+						    Modal content
+						    <div class="modal-content">
+						      <div class="modal-header" style="border:none;">
+						        <button type="button" class="close" data-dismiss="modal">&times;</button>
+						       
+						      </div>
+						      <div class="modal-body">
+						        <p class="fetchTeacherSceneErr_msg"></p> 
+						      </div>
+						      
+						    </div>
+						
+						  </div>
+					 </div> 
+						
+                	
+                </section>
+                
+                <section id="delete_teacher_section" class="tab-pane">
+                  
+                	<div class="container">
+                		
+                		<div class="row">
+						  <div class="col-md-12">
+							<div class="text-center p-15">
+								<h3 class="f-roboBold">Delete Teacher</h3>
+							</div>
+						  </div>
+						</div>
+                		
+                		<div class="row">
+                			<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+                				<form id="delete_teacher_form">
+                					
+                					<div class="form-group">
+						  					<select name="Listof_teachers" class="form-control selectpicker" title="">
+								                <option hidden >List of Teachers</option>
+								                <option value="black">Teacher1</option>
+								                <option value="blue">Teacher2</option>
+								                <option value="green">Teacher3</option>
+	            							</select>
+						  			</div>
+                				     
+                				    <div class="teacher_detailDiv form-group">
+                				    	<p class="">Teacher Details</p>  
+                				    </div>
+                				    
+                				    <div class="student_detailDiv form-group">
+                				        <p>Students Assign to Teacher Name</p>
+                				    </div> 
+                				    
+                				    <div class="form-group">
+                				    	<a class="btn btn-default btn-common" role="button" onclick="" style="">Delete</a>
+                				    </div>
+                				    
+                				</form>
+                			</div>
+                		</div>
+                		
+                		
+                		
+                	</div>
+                
+                </section>
+            	
+            	</div>
+            
+            </div>
+		</div>
+
+ 		<div class="overlay"></div>
+		
+		<!-- jQuery CDN -->
+      <!--   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
+        <script src="js/jquery-2.2.4.min.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         <script src="js/universityAdmin.js"></script>
+        
+        <!-- Script for collapsible menu -->
+        <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active'); 
+                $('.overlay').fadeOut();
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+            	$('#sidebar').addClass('active');  
+                $('.overlay').fadeIn();
+                 $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false'); 
+            });
+            
+            $('#sidebar a').on('click', function (e) {
+		        $('#sidebar a[aria-expanded=true]').attr('aria-expanded', 'false');
+		        $('#sidebar li').removeClass('active');
+		        if ($(this).attr("data-toggle") == "tab") {
+		            window.setTimeout(function () {
+		                $(this).parent("li").addClass('active');
+		            }, 500);
+		        }
+			 });
+        });
+		</script>
+		
+		<script type="text/javascript">
+			function resetAddTeacher(){
+				 document.getElementById("add_teacher_form").reset();
+				 document.getElementById("fileName").text('File Name...');
+			}
+			
+			jQuery(function($) {
+				  $('input[type="file"]').change(function() {
+				    if ($(this).val()) {
+					    error = false;
+				    
+				      var filename = $(this).val().replace(/.*(\/|\\)/, '');
+						 
+							$(this).closest('.file-upload').find('.file-name1').html(filename).attr("title",filename);
+
+				      if (error) {
+				        parent.addClass('error').prepend.after('<div class="alert alert-error">' + error + '</div>');
+				      }
+				    }
+				  });
+				});
+		</script>
+</body>    
+</html>

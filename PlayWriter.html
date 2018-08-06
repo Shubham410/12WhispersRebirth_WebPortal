@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="shortcut icon" href="images/favicon.png">
+        <title>12 Line-Wonder Teacher Portal</title>
+
+       		 <!-- Bootstrap CSS CDN -->
+        <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        	<!-- Font Awesome -->
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+        	<!-- Our Custom CSS -->
+        <link rel="stylesheet" href="css/collapseStyle.css">
+        	<!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+        
+        <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
+        
+        <script type="text/javascript" src=" https://printjs-4de6.kxcdn.com/print.min.js"></script>    
+        <script src="https://docraptor.com/docraptor-1.0.0.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+		<link rel="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+
+
+        <script>
+		    var downloadPDF = function() {
+		      DocRaptor.createAndDownloadDoc("YOUR_API_KEY_HERE", {
+		        test: true, // test documents are free, but watermarked
+		        type: "pdf",
+		        document_content: document.getElementById('printReport').innerHTML, // use this page's HTML
+		        // document_content: "<h1>Hello world!</h1>",               // or supply HTML directly
+		        // document_url: "http://example.com/your-page",            // or use a URL
+		        // javascript: true,                                        // enable JavaScript processing
+		        // prince_options: {
+		        //   media: "screen",                                       // use screen styles instead of print styles
+		        // }
+		      })
+		    }
+ 		</script>
+        
+    </head>
+    
+    <style>
+	    .loading {
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		position: fixed;
+		display: block;
+		opacity: 0.7;
+		background-color: #fff;
+		z-index: 99;
+		text-align: center;
+		background: url(images/ajax-loader.gif) 50% 50% no-repeat rgba(0, 0, 0, 0.6);
+		}
+        #studentList_sideBar a::before{
+        	content: '';
+        }
+        #AssignStudent_siderBar a::before{
+        	content: '';
+        }
+        #publishScene_sideBar a::before{
+        	content: '';
+        }
+        #report_sideBar a::before{
+        	content:'';
+        }
+        #boilerplate_sidebar a::before{
+        	content:'';
+        }
+        #addStudent_sidebar a::before{
+        	content:'';
+        }
+        #addClass_sidebar a::before{
+        	content:'';
+        }
+    </style>
+    
+<body>
+		
+		<div class="wrapper">
+		
+		<!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div id="dismiss">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </div>
+
+                <div class="sidebar-header">
+                    <h3 class="f-roboBold">12 Line Wonder</h3>
+                </div>
+
+               <ul class="list-unstyled components f-roboRegular" style="padding:0;">
+
+                  <!--   <li id="" class="active">
+                        <a class="hide_sidebar" href="#teacher_dashboard" data-toggle="tab">Dashboard</a>
+                    </li> -->
+
+                    <!-- <li id="" class="colps active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                        Add
+                        </a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li id="addStudent_sidebar"><a class="hide_sidebar" href="#addStudent_section" data-toggle="tab">Student</a></li>
+                            <li id="addClass_sidebar"><a class="hide_sidebar" href="#addclass_section" data-toggle="tab">Class</a></li>
+                        </ul>
+                    </li> -->
+					
+					<li id="AssignStudent_siderBar" >
+                        <a  class="hide_sidebar" ref="#assignstudent_section" data-toggle="tab"> View 12 Whispers Submitted By User</a>
+                    </li>
+
+                    <li id="studentList_sideBar" >
+                        <a  class="hide_sidebar" href="#studentList_section" data-toggle="tab">Scene Submitted By Me</a>
+                    </li>
+                    
+                     <!-- <li id="publishScene_sideBar" >
+                        <a  href="#publish_scene_section" data-toggle="tab">Publish Scene</a>
+                     </li>
+					
+					 <li id="report_sideBar" >
+                        <a  href="#student_report_section" data-toggle="tab">Reports</a>
+                     </li>
+                     
+                      <li id="boilerplate_sidebar" >
+                        <a class="hide_sidebar" href="#boiler_plate_section" data-toggle="tab">View Boilerplate</a>
+                      </li> -->
+                </ul>
+
+            </nav>
+		
+			<div id="content">
+			
+				<div class="container-fluid headerBg">
+					<div class="ptb-10">	
+						<div class="row">
+						
+							<div class="col-md-1 col-xs-3 text-center">
+						
+							  <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+								<i class="glyphicon glyphicon-align-left"></i> 
+									<!-- <span>Select Option</span>  -->
+							  </button>	
+					
+							</div>	
+							
+							<div class="col-md-10 col-xs-6 text-center">
+								<h4 class="portal_heading">Welcome to 12 Line Wonder</h4>
+								<h4 class="teacher_name f-roboBold" style="color:#ffffff;"></h4>
+							</div>
+							
+							<div class="col-md-1 col-xs-3 text-center">
+								<h5 class="logout_btn">Logout</h5>
+							</div>
+								
+						</div>
+					  </div>
+				</div>
+			
+				
+				<div class="tab-content">
+               
+               <!-- ---------------------------------- Section add Student ----------------------------- -->
+                
+               
+                
+                <section id="addStudent_section" class="tab-pane active">
+                
+                	<div class="container">
+	                	<div class="row">
+							  <div class="col-md-12">
+								<div class="text-center p-15">
+									<h3 class="f-roboBold">Add New Student</h3>
+								</div>
+							  </div>
+						</div>
+					</div>
+					
+					<div>
+					
+						<div class="container">
+						 <div class="row">
+						 	<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+						 		<form id="add_student_form">
+						 			
+						 			<div class="form-group text-center mt-25">
+					  					<input id="student_name" name="student_name" class="form-control" type="text" placeholder="Student Full Name" />
+					  				</div>
+                							
+              						<div class="form-group text-center mt-25">
+			  							<input id="student_email" name="student_email" class="form-control" type="email" placeholder="Student Email Id" />
+			  						</div>
+              							
+              							<div class="form-group text-center mt-25">
+			  							<input id="student_uniqueId" name="student_uniqueId" class="form-control" type="text" placeholder="Student Unique Id" />
+			  						</div>
+			  					
+				  					<div class="form-group text-center mt-25">
+				  						<input id="student_password" name="student_password" class="form-control" type="password" placeholder="Student Password" />
+				  					</div>
+						 			
+						 			<div class="text-center">
+						 				<p>[ OR ]</p>
+						 			</div>
+						 			
+						 			<div class="form-group file-upload1 mt-25">
+				  						<input id="student_file" name="student_file" class="form-control" type="file" accept=".csv" placeholder="Student List File" style="display:none;" />
+				  						<p id="Student_fileName" class="file-name2"> File Name...</p>
+				  					</div> 
+				  					
+				  					<div class="form-group text-center mt-25">
+					  				    
+			  				       		<a id="AddStudent_Btn" class="btn btn-default btn-common" role="button" onclick="" style="margin-right:10px">Save</a>
+                    <!-- 			  				       		<a class="btn btn-default btn-common" role="button" onclick="resetAddStudent()" style="margin-right:10px">Create New Student</a>
+ -->			  				       		<label id="upload_teacherfile" class="btn btn-default btn-common" for="student_file" role="button" onclick="">Import Student List</label>
+			  				    	
+			  				    	</div>
+						 			
+						 		</form>
+						 	</div>
+						 </div>
+						
+						</div>
+					
+					</div>
+                    
+                    <!-- Modal to display validation and error for add student -->
+				
+					<div id="Student_ErrModal" class="modal" role="dialog" >
+					  <div  class="modal-dialog">
+					    <div class="modal-content">
+					    	<div class="modal-header" style="border:none;">
+						        <div>
+						        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+						        </div>
+						     </div>
+							 <div class="modal-body">
+						   		 <p id="Student_ErrText"></p>
+							 </div>
+						  </div>
+					  </div>
+					</div>
+                    
+                </section>
+			
+			 <!-- -------------------------------------- Section add Class ----------------------------------- -->
+			
+				<section id="addclass_section" class="tab-pane">
+					
+					<div class="container">
+						<div class="row">
+							  <div class="col-md-12">
+								<div class="text-center p-15">
+									<h3 class="f-roboBold">Add New Class</h3>
+								</div>
+							  </div>
+						</div>
+					</div>
+					
+					 <div class="container">
+						<div class="row">
+							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+								
+								<form id="add_class_form">
+									
+									<div class="form-group text-center mt-25">
+					  					<input id="Class_name" name="Class_name" class="form-control" type="text" placeholder="Class Name" />
+					  				</div>
+									
+									<div class="form-group text-center mt-25">
+										<a id="AddClass_btn" class="btn btn-default btn-common" role="button" onclick="" style="margin-right:10px">Save</a>
+										<!-- <a class="btn btn-default btn-common" role="button" onclick="resetAddClass()" >Create New Class</a> -->
+									</div>
+								
+								</form>
+							
+							</div>
+						</div>
+					</div> 
+					
+					<!-- Modal -->	
+					<div id="AddClass_ErrModal" class="modal" role="dialog" >
+					  <div  class="modal-dialog">
+					    <div class="modal-content">
+					    
+					    	<div class="modal-header" style="border:none;">
+						        <div>
+						        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+						        </div>
+						     </div>
+					    		
+							<div class="modal-body">
+						    <p class="AddClass_ErrText"></p>
+							</div>
+							
+						  </div>
+					  </div>
+					</div>
+						
+				</section> 
+			       <!-- ---------------------- Section Assign Class --------------------- -->
+			       
+			    <section id="assignstudent_section" class="tab-pane">
+			    	
+			    	<div class="container">
+				    	<div class="row">
+							  <div class="col-md-12">
+								<div class="text-center p-15">
+									<h3 class="f-roboBold">Assign Student</h3>
+								</div>
+							  </div>
+						</div>
+					</div>
+			    
+			    	<div class="container">
+			    		
+			    		<div class="row">
+			    			<div class="col-sm-10 col-sm-offset-1">
+			    				
+			    				<div class="bordered_div" style="margin-bottom: 20px;">
+			    				  
+			    				   <div class="row">
+			    				   		
+			    				   		<div class="col-sm-6">
+			    				   			<div class="text-left">
+						 						<div class="panel panel-info">
+						 							<div class="panel-heading">
+						 								List of Students
+						 							</div>
+						 							
+						 							<div class="panel-body" id="append_student">
+						 								<!-- <div class="sceneBox_Style">
+															<label>
+																<input type="checkbox" name="check"> <span class="label-text">Student 1</span>
+															</label>
+														</div> -->
+														<!--  Display list from BackEnd -->														
+						 							</div>
+						 						</div>
+					 						</div>
+			    				   		</div>		
+			    				   		
+			    				   		<div class="col-sm-6">
+				    				   		<div class="text-left">
+						 						<div class="panel panel-info">
+						 							<div class="panel-heading">
+						 								List of Classes
+						 							</div>
+						 							
+						 							<div class="panel-body" id="append_classes">
+						 							  
+						 							  <!--  <div class="boxStyle">
+						 							   	<label>
+						 							   	  Classes
+						 							   	</label>
+						 							   </div> -->
+						 							    
+						 							   <!-- Display class list from back-end --> 
+						 							</div>
+						 						</div>
+						 					</div>
+			    				   		</div>		
+			    				  
+			    				   </div>
+			    				
+			    				</div>
+			    			
+			    			</div>
+			    		</div>
+			    	
+			    	</div>
+			        <!-- modal -->
+			        <div id="fetchClass_ErrModal" class="modal" role="dialog" >
+					  <div  class="modal-dialog">
+					    <div class="modal-content">
+					    
+				     		<div class="modal-header" style="border:none;">
+						        <div>
+						        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+						        </div>
+						     </div>
+							
+							<div class="modal-body">
+						    	<p class="fetchClass_ErrText"></p>
+							</div>
+							
+						  </div>
+					  </div>
+					</div>
+			    </section>
+			    
+			    <!-- ------------------------------ Student List Section ------------------------------ -->
+			    
+			    <section id="studentList_section" class="tab-pane">
+			    
+			    	<div class="container">
+				    	<div class="row">
+							  <div class="col-md-12">
+								<div class="text-center p-15">
+									<h3 class="f-roboBold">Scene</h3>
+								</div>
+							  </div>
+						</div>
+					</div>
+					
+					<div class="container">
+					
+						<!-- <div class="row">
+							<div class="col-xs-12">
+							
+								<div>
+									<form>
+										<div class="form-group">
+						  					<select id="Listof_classes" name="Listof_classes" class="form-control selectpicker" title="">
+								               
+	            							</select>
+						  				</div>
+									</form>
+								</div>
+							
+							</div>	
+						</div> -->
+						
+						<div class="row">
+							<div class="col-xs-12">
+								
+									<div id="addBorder" class="table-responsive" style="margin-bottom:25px;">
+									   <table id="TabularList_student" class="table table-striped table-responsive" cellspacing="0" width="100%">
+									   
+									   </table>
+									</div>
+								
+							</div>
+						</div>
+					
+					</div>
+			    
+			    	 <!-- modal -->
+			        <div id="studentList_ErrModal" class="modal" role="dialog" >
+					  <div  class="modal-dialog">
+					    <div class="modal-content">
+					    
+				     		<div class="modal-header" style="border:none;">
+						        <div>
+						        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+						        </div>
+						     </div>
+							
+							<div class="modal-body">
+						    	<p id="studentList_ErrText"></p>
+							</div>
+							
+						  </div>
+					  </div>
+					</div>
+					
+			    </section>
+			    
+			    <!-- ------------------------- Publish Scene section ------------------------------ -->
+			   
+			    <section id="publish_scene_section" class="tab-pane">
+			    
+			    <div id="publishSceneTable_Div">	
+				   <div class="container">
+				    <div class="row">
+					  <div class="col-md-12">
+						<div class="text-center p-15">
+							<h3 class="f-roboBold">Publish Scene</h3>
+						</div>
+					  </div>
+					</div>
+					</div>
+					<div class="container">
+						
+						<div class="row">
+							<div class="col-xs-12">
+							
+							<div class="table-responsive ">
+								<table id="TabularList_scene" class="table table-striped table-responsive" cellspacing="0" width="100%">
+								
+								</table>
+							</div>
+							</div>
+						</div>
+						
+					</div>
+			    </div>
+			  
+			    
+			    <!-- View Scene Section -->
+	  
+			    <div id="viewSceneDiv" class="container" style="display:none;">
+			    
+			    	<div class="row">
+
+							<div class="col-xs-6"></div>
+
+							<div class="col-xs-6 text-right">
+								<a id="back_toPublishSceneDiv" class="btn btn-default btn-common" role="button" onclick="" style="margin-bottom:25px;">Back</a>
+							</div>
+					</div>
+							
+							<div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									
+									<div class="panel panel-info">
+
+										<div class="panel-heading">View Scene</div>
+
+										<div class="panel-body">
+										
+											<div class="row">
+
+												<div class="col-md-2 col-sm-4 col-xs-8">
+
+													<div class="form-group">
+														<label>Title : </label>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+
+													<div class="form-group">
+														<p id="view_SceneTitle"></p>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12"
+													style="display: none;">
+												</div>
+
+											</div>
+											
+											<div class="row">
+
+												<div class="col-md-2 col-sm-4 col-xs-8">
+
+													<div class="form-group">
+														<label>Author Name : </label>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+
+													<div class="form-group">
+														<p id="view_SceneAuthor"></p>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12"
+													style="display: none;">
+												</div>
+
+											</div>
+											
+											<div class="row">
+
+												<div class="col-md-2 col-sm-4 col-xs-8">
+													<div class="form-group">
+														<label>Time & Place : </label>
+													</div>
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<p id="view_SceneTimePlace"></p>
+													</div>
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12" style="display: none;">
+												</div>
+
+											</div>
+										
+											<div id="show_whispers">
+											
+												<!-- view whispers can be shown here by fetching data -->
+											
+											</div>
+										
+											<div class="row">
+												<div class="col-md-6 col-md-offset-3 col-xs-12 text-center">
+													<img id="scene_img" class="img-responsive" src="" style="display:inline-block;">
+												</div>
+											</div>
+											
+										</div>
+										
+								   </div>
+									
+									
+								</div>
+							</div>
+
+			    </div>
+			    
+			    <!-- view lesson plan div -->
+			    <div id="view_lessonPlan" class="container" style="display:none;">
+			    
+			    <div class="row">
+						<div class="col-xs-6"></div>
+
+						<div class="col-xs-6 text-right">
+							<a id="btn_navtoTable" class="btn btn-default btn-common" role="button" onclick="" style="margin-bottom:20px;">Back</a>
+						</div>
+				</div>
+				
+				<div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+
+									<div class="panel panel-info">
+
+										<div class="panel-heading">View Lesson Plan</div>
+
+										<div class="panel-body">
+										
+											<div class="row">
+											
+												<div class="col-md-4 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<label>Discussion Question:</label>
+													</div>
+												</div>
+												
+												<div class="col-md-4 col-sm-4 col-xs-12">
+													<div class=" form-group">
+														<a id="discussPDf1" href="" target="_blank"><p class="p_viewLesson">Click to open pdf without answer</p></a>
+													</div>
+												</div>
+												
+												<div class="col-md-4 col-sm-4 col-xs-12">
+													<div class=" form-group">
+														<a id="discussPDf2" href="" target="_blank"><p class="p_viewLesson">Click to open pdf with answer</p></a>
+													</div>
+												</div>
+												
+											</div>
+											
+											<div class="row">
+												<div class="col-md-12 col-xs-12">
+													<div class="table-responsive ">
+														<table  id="Tabular_lessonPlan" class="table table-striped table-responsive" cellspacing="0" ">
+															
+														</table>
+													</div>
+												</div>
+											</div>
+										
+										</div>
+										
+										</div>
+									
+								</div>	
+				</div>	
+				
+				<!-- <div class="row">
+					<div class="col-md-12 col-xs-12">
+						<div class="table-responsive table_border">
+							<table  id="Tabular_lessonPlan" class="table table-striped table-responsive" cellspacing="0" ">
+								
+							</table>
+						</div>
+					</div>
+				</div> -->				
+			    
+			    </div>
+			    
+			    <!-- modal -->
+			        <div id="publish_ErrModal" class="modal" role="dialog" >
+					  <div  class="modal-dialog">
+					    <div class="modal-content">
+					    
+				     		<div class="modal-header" style="border:none;">
+						        <div>
+						        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+						        </div>
+						     </div>
+							
+							<div class="modal-body">
+						    	<p id="publish_ErrText"></p>
+							</div>
+							
+						  </div>
+					  </div>
+					</div>
+			  
+			 </section>   
+			    
+			    <!-- -------------------------- Reports section  ------------------------ -->   
+			    
+		    <section id="student_report_section" class="tab-pane">
+		    
+		    	<div class="container">
+				    <div class="row">
+					  <div class="col-md-12">
+						<div class="text-center p-15">
+							<h3 class="f-roboBold">Reports</h3>
+						</div>
+					  </div>
+					</div>
+				</div>
+				
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-8 col-sm-offset-2 col-xs-12">
+							
+							<form method="POST" action="#" id="student_report_form">
+								
+								<div id="dvContainer" class="printDiv">
+								
+								<div class="form-group">
+				  					<select id="ListofClass1" name="ListofClass1" class="form-control selectpicker" title="">
+						               fetch class list
+						               
+           							</select>
+				  				</div>
+								
+								<div class="form-group">
+				  					<select id="ListOfStudents_inClass" name="ListOfStudents_inClass" class="form-control selectpicker" title="">
+						               
+           							</select>
+				  				</div>
+							    
+							    
+							    
+							   <div id="printReport" class="student_detailDiv form-group">
+               				    	<!-- <p class="">Quiz Score</p>  --> 
+               				    		
+               				   <div>
+               				   		<p></p>
+               				    </div>
+               				   
+               				   </div>
+							    
+							    
+							   <div class="form-group">
+  				    		
+        				    		<a id="btnPrint" class="btn btn-default btn-common" role="button" onclick="printJS({ printable: 'printReport', type: 'html', header: 'Student Report' })" >Print</a>
+   				    		
+               				   </div> 
+							   
+							   </div>
+							
+							</form>
+							
+						</div>
+					</div>
+				</div>
+		    
+		    	 <!-- modal -->
+		        <div id="Report_ErrModal" class="modal" role="dialog" >
+				  <div  class="modal-dialog">
+				    <div class="modal-content">
+				    
+			     		<div class="modal-header" style="border:none;">
+					        <div>
+					        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+					        </div>
+					     </div>
+						
+						<div class="modal-body">
+					    	<p id="Report_ErrText"></p>
+						</div>
+						
+					  </div>
+				  </div>
+				</div>
+		    	
+		    </section>  
+			    <!-- --------------------------- View Boilerplate Section ------------------- --> 
+			    
+			   <!--  <section id="boiler_plate_section" class="tab-pane">
+			      
+			      <div id="boilerplatePrint" class="container">
+			        <div class="row">
+			        	<div class="col-md-10 col-md-offset-1 col-xs-12">
+			        	   
+			        	    <div class="text-center p-15">
+								<h3 class="f-roboBold">12 Line Wonder Boilerplate</h3>
+							</div>
+			        	    
+			        	    <div id="boiler_div" class="information_Div">
+			        	    	<p><b>General Notes for the Teacher :</b>  You select the lesson plan from your 12@12NOON unit.   The teacher’s version will appear on your mobile device and the students will receive their version of the scene.  For the lesson, the teacher’s version of the lesson plan will appear on your mobile device AND you have the capability to display screens containing the 12-lines of dialogue on a whiteboard via an HDMI device.  </p>
+			        	        
+			        	        <p><b>General Notes for Your Students :</b>  On their individual devices, students have the ability to move back and forth throughout the app, so they can navigate to a particular screen to read it more than once, illustrate a point they are making about the scene and they can follow your instructions to navigate to a particular screen to discuss/highlight vocabulary and content.
+			        	        </p>
+			        	        
+			        	        <p><b>Student Profile :</b>  Young, Adult Learners (approximately 18-24 years old)</p>
+			        	        
+			        	        <p><b>General Objective :</b>  Upon completion of this lesson, students will be able to:
+				        	        <ul>
+				        	        	<li>Demonstrate comprehension of the scene, from beginning to end, including  time, place, action, and characters;</li>
+				        	        	<li>Analyze the content of the scene (change in events, the characters’ feelings, and their choices);</li>
+				        	            <li>Recognize, define, and develop vocabulary. </li>
+				        	        </ul>
+			        	        </p>
+			        	        
+			        	        <p><b>Required Materials :</b>  12 Line Wonder App on Tablets or IPads Devices for students and teacher/White Board or Black Board/chalk/marker.</p>
+			        	        
+			        	        <div class="text-center">
+			        	          <h3>I. READING DRAMA and STAGE DIRECTIONS</h3>
+			        	        </div>
+			        	        
+			        	        <p>Today, the class will read a scene.  A scene is a set of events, movements or things that follow each other in a particular order.  Scenes often have characters who speak.  What each character says is called dialogue.  
+			        	        </p>
+			        	        
+			        	        <p>On the 12 Line Wonder App, there will be one line of dialogue on each screen, which will make up the 12-line scene your students will be reading today. </p>
+			        	        
+			        	        <p>The class will also be reading stage directions.  Actors do not read the stage directions to the audience, they use them to help them create their character.  Stage directions also tell us how the character is feeling when they speak.  Stage directions can appear immediately before the character speaks, or during his line of dialogue, but are always set off by parenthesis.  The following are examples:</p>
+			        	    
+			        	        <div class="text-center">
+			        	          <p>RUDY</p>
+                                  <p>(laughing)</p>
+                                  <p>“I don’t know why she said that to me."</p>
+			        	        </div>
+			        	        
+			        	        <div class="text-center">
+			        	          <p>RUDY</p>
+                                  <p>(sadly)</p>
+                                  <p>“I don’t know why she said that to me."</p>
+			        	        </div>
+			        	        
+			        	        <p>Stage directions can also tell us what the actor is doing, such as clapping, reaching for something, or taking a seat.</p>
+			        	    
+			        	    	<div class="text-center">
+			        	          <p>MARQUELL</p>
+                                  <p>“We can’t do that! (jumping to his feet) We have to go to school to take our test!"</p>
+			        	        </div>
+			        	         
+			        	          <p>12 Line Wonder scenes begin with a Graphics Page that has a picture and tells us the time, place, and describes the characters in the scene. 
+			        	          </p>
+			        	          
+			        	        <div class="text-center">
+			        	          <h3>II. NAVIGATING THE 12 Line Wonder APP </h3>
+			        	        </div>  
+			        	        
+			        	        <p>Screen 1 is the splash screen, with the name of the scene and the name of the person who wrote the scene, the playwright.  The class will see this screen for about 5 seconds, then it will be replaced by Screen 2.</p>  
+			        	        
+			        	        <p>On Screen 2, students will sign in with the Username and Password you have assigned to them.</p>
+			        	    
+	                            <p>On Screen 3, the class will see the  Graphics Page.  It will contain a picture of what the scene is about and the time, place, and characters in the scene.  At the bottom of Screen 3, you will see navigation arrows, ‘ <’ on the left and ‘ >’  on the right.  Once you have finished reading Screen 3, students will press the arrow on the right to move to the next screen.</p>		        	    
+			        	   
+			        	        <p><Once the class has read all 12 lines of the scene, they will see the words END OF SCENE at the bottom of the screen.  Students will press the arrow on the right and proceed to the following screen:/p>
+			        	        
+			        	        <div class="text-center">
+			        	        <p>It’s time to write your own 12@12NOON scene based on the scene you just read!  
+			        	        You can use these characters, add  characters, and begin your scene before or after the scene that you just read! 
+			        	        Use your own imagination to tell us more about the characters and their circumstances.</p>
+			        	        
+			        	        <p>Each line should be 140 characters, just like the scene you’ve just read.  
+			        	        Remember, you have to write 12 lines to press the submit button and send it to your teacher!  
+			        	        To get started, press the ‘Continue’ button at the bottom of the screen.  
+			        	        The first text box and the keyboard will appear!</p>
+			        	        
+			        	        <p>Good Luck !!</p>
+			        	        </div>
+			        	        <p>Students can work individually or with a partner.</p>
+			        	    
+			        	    	<div class="text-center">
+			        	    	  <h3>III. READING THE SCENE </h3>
+			        	    	</div>
+			        	    	
+			        	    	<p>There are a number of ways to read the scene.  Choose the one that best suits your class.</p>
+			        	    	
+			        	    	<ol>
+			        	    	
+				        	    	<li>Have two actors/volunteers come to class and read the scene aloud before the class.</li>
+				        	    	<li>Have the students read the scene silently from their tablets.</li>
+				        	    	<li>Have three students read the scene aloud (Barb, Tim, stage directions) with the other students following along with them as they read.</li>
+				        	    	
+			        	    	</ol>
+			        	    	
+			        	    	<div class="text-center">
+			        	    	  <h3>IV. PERFORMANCE STRATEGIES</h3>
+			        	    	</div>
+			        	    	
+			        	    	<p><b>A. Line Toss</b></p>
+			        	    	<p>The objective of this strategy is to keep an object in constant movement while reading. 
+								For this strategy, you will need the following materials:</p>
+								
+								<ul>
+									<li>12 Line Wonder scene</li>
+									<li>Index cards</li>
+									<li>Object to toss (pillow/ball)</li>
+									<li>Black board/white board</li>
+								</ul>
+								
+								<p>First, write down the lines of the 12@12NOON scene, including the stage directions, on separate index cards. 
+								Hand out more than one of the written cards to each student. 
+								Ask the students to read their cards silently. If anyone has a word they don't understand, write the word on the board. 
+								Invite all other students to define the word. Write a brief, clear definition of the word on the board.</p>
+								
+								<p>Second, have the students stand in a circle. Give one of the students an object to toss. 
+								Instruct the student with the object to read the line on his/her card and toss the object to another student in the circle, and so on. The goal is to keep the object in constant movement so everyone has a chance to read their cards several times.</p>
+			        	    
+			        	    	<p>Third, put all the cards in a hat. 
+			        	    	Ask each student to pull one out and write the scene on a separate sheet of paper, along with the line on their card and anyone else's line they remember. Keep a tally of the number of lines they remember. The student who remembers the most lines is the winner!</p>
+			        	    
+			        	    	<p><b>B. WILLIE & SAM</b></p>
+			        	    	
+			        	    	<p>The objective of this strategy is group reading and thinking aloud. 
+								For this strategy, we are using the Willie & Sam scene below. It is a very neutral scene, it could take place anywhere (on the bus, at a wedding) and anything could be going on between these two characters. You can use an HDMI connection to display the scene or print it for your students. 
+								Read the scene.  Ask the students to discuss about the scene, the possible character choices and circumstances. Ask the students to give one or both characters nonverbal communication. For instance, Sam could have a terrible cold or Willie could refuse to look at Sam. Then, pair students off, casting them as Willie and Sam. Call each pair to the front of the room to read their scenes while acting out the non-verbal communication.</p>
+			        	    	
+			        	    	<div class="text-center">
+			        	    		<h3>WILLIE & SAM</h3>
+			        	    	</div>
+			        	    	
+			        	    	<div class="text-center">
+			        	    		<p><b>Screen 1</b></p>
+			        	    		
+			        	    		<div class="text-center">
+			        	    			<p>SAM : Hi.</p>
+			        	    		</div>
+			        	    		
+			        	    		<p><b>Screen 2</b></p>
+			        	    		
+			        	    		<div class="text-center">
+			        	    			<p>WILLIE : Hey, what’s up?</p>
+			        	    		</div>
+			        	    		
+			        	    		<p><b>Screen 3</b></p>
+			        	    		
+			        	    		<div class="text-center">
+			        	    			<p>SAM : Not much.</p>
+			        	    		</div>
+			        	    		
+			        	    		<p><b>Screen 4</b></p>
+			        	    		
+			        	    		<div class="text-center">
+			        	    			<p>WILLIE : Me neither.</p>
+			        	    		</div>
+			        	    		
+			        	    		<p><b>Screen 5</b></p>
+			        	    		
+			        	    		<div class="text-center">
+			        	    			<p>SAM : I’m glad you’re here.</p>
+			        	    		</div>
+			        	    		
+			        	    		<p><b>Screen 6</b></p>
+			        	    		
+			        	    		<div class="text-center">
+			        	    			<p>WILLIE : There’s not really much to say.</p>
+			        	    		</div>
+			        	    		
+			        	    		<p><b>Screen 7</b></p>
+			        	    		
+			        	    		<div class="text-center">
+			        	    			<p>WILLIE : Want some?</p>
+			        	    		</div>
+			        	    		
+			        	    		<p><b>Screen 8</b></p>
+			        	    		
+			        	    		<div class="text-center">
+			        	    			<p>SAM : No, thanks.</p>
+			        	    		</div>
+			        	    		
+			        	    		<p><b>Screen 9</b></p>
+			        	    		
+			        	    		<div class="text-center">
+			        	    			<p>WILLIE : Do you mind if...</p>
+			        	    		</div>
+			        	    		
+			        	    		<p><b>Screen 10</b></p>
+			        	    		
+			        	    		<div class="text-center">
+			        	    			<p>SAM : No, go ahead.</p>
+			        	    		</div>
+			        	    		
+			        	    		<p><b>Screen 11</b></p>
+			        	    		
+			        	    		<div class="text-center">
+			        	    			<p>WILLIE : Are you sure?</p>
+			        	    		</div>
+			        	    		
+			        	    		<p><b>Screen 12</b></p>
+			        	    		
+			        	    		<div class="text-center">
+			        	    			<p>SAM : Why wouldn’t I be?</p>
+			        	    		</div>
+			        	    		
+			        	    		<div class="text-center">
+			        	    			<p>End of Scene</p>
+			        	    		</div>
+			        	    		
+			        	    	</div>
+			        	    	
+			        	    	<p><b>C. WORD PLAY</b></p>
+			        	    	
+			        	    	<p>The objective of this strategy is to help increase vocabulary and word choice. For this strategy, you will need a 12 line wonder scene and a Black board/white board.</p>
+			        	    	 
+			        	    	<p>Organize the students into a few small groups. Read the scene as a group.  Select a word that is significant to the story and write it on the board.  Draw a circle around the word. Ask the groups to make a list of words, associated with the word on the board.  Give them several minutes.  Invite students from each group to come to the board to add a word.  Students should draw a line from the circle and add the word to the other end of the line.</p> 
+			        	    </div>
+			        	</div>
+			        </div>
+			      </div>
+			       
+			        <div class="container">
+			      	<div class="row">
+			      		<div class="col-md-10 col-md-offset-1 col-xs-12">
+			      			 <div class="form-group">		    		
+								<a id="btnBoilerPrint" target="_blank" class="btn btn-default btn-common" role="button" onclick="printJS({ printable: 'boilerplatePrint', type: 'html', header: 'Boilerplate' })" >Print</a>
+ 							 </div> 
+			      		</div>
+			      	</div>
+			      </div> -->
+			       
+			       
+			    </section>
+			    
+			    
+			    
+			    
+			  </div>
+			  
+			</div>
+				
+		</div>
+			
+		<div class="overlay"></div>
+			
+		<!-- jQuery CDN -->
+        <!-- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
+        <!-- Bootstrap Js CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+        <script src="js/PlayWriter.js" type="text/javascript"></script>
+       
+        
+         <!-- Script for collapsible menu -->
+        <script type="text/javascript">
+        
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active'); 
+                $('.overlay').fadeOut();
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+            	$('#sidebar').addClass('active');  
+                $('.overlay').fadeIn();
+                 $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false'); 
+            });
+            
+            $('#sidebar a').on('click', function (e) {
+		        $('#sidebar a[aria-expanded=true]').attr('aria-expanded', 'false');
+		        $('#sidebar li').removeClass('active');
+		        if ($(this).attr("data-toggle") == "tab") {
+		            window.setTimeout(function () {
+		                $(this).parent("li").addClass('active');
+		            }, 500);
+		        }
+			 });
+        });
+		</script>
+		
+		<script type="text/javascript">
+		
+		function printDiv(divName) {
+		     var printContents = document.getElementById('student_report_section').innerHTML;
+		     var originalContents = document.body.innerHTML;
+
+		     document.body.innerHTML = printContents;
+
+		     window.print();
+
+		     document.body.innerHTML = originalContents;
+		}
+		
+		
+		function resetAddStudent(){
+			document.getElementById("add_student_form").reset();
+		}
+		
+		function resetAddClass(){
+			document.getElementById("add_class_form").reset();			
+		}
+		
+		jQuery(function($) {
+			  $('input[type="file"]').change(function() {
+			    if ($(this).val()) {
+				    error = false;
+				    
+			      var filename = $(this).val().replace(/.*(\/|\\)/, '');
+			      
+						$(this).closest('.file-upload1').find('.file-name2').html(filename).attr("title",filename);
+
+			      if (error) {
+			        parent.addClass('error').prepend.after('<div class="alert alert-error">' + error + '</div>');
+			      }
+			    }
+			  });
+		});
+		</script>
+		<script type="text/javascript">
+          $(".hide_sidebar").on('click',function(){
+        	  $('#sidebar').removeClass('active'); 
+              $('.overlay').fadeOut();
+          }); 
+        </script>
+</body>    
+</html>

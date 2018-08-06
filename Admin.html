@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+
+<!-- <meta http-equiv="Content-Type" content="text/html" charset=ISO-8859-1"> -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="images/favicon.png">
+
+<title>12 Whispers @ 12 NOON Admin</title>
+ 
+ 
+<!-- Bootstrap CSS CDN -->
+<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<!-- Our Custom CSS -->
+<link rel="stylesheet" href="css/collapseStyle.css">
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+</head>
+<style>
+#overUsr a::before{
+	content:'';
+}
+#resetPW a::before{
+	content:'';
+}
+#crtUser a::before{
+	content:'';
+}
+#uni_sidebar a::before{
+	content:'';
+}
+#box_sidebar a::before{
+	content:'';
+}
+#scene_sidebar a::before{
+	content:'';
+}
+</style>
+<body>
+
+	<div class="wrapper">
+		<!-- Sidebar Holder -->
+		<nav id="sidebar">
+			<div id="dismiss">
+				<i class="glyphicon glyphicon-arrow-left"></i>
+			</div>
+
+			<div class="sidebar-header">
+				<h3 class="f-roboBold">12 Line Wonder</h3>
+			</div>
+
+			<ul class="list-unstyled components f-roboRegular" style="padding: 0;">
+
+				<li id="crtUser" class="active"><a href="#dashboard"
+					data-toggle="tab">Dashboard</a></li>
+
+				<li id="calibration_Nav" class="colps"><a href="#homeSubmenu"
+					data-toggle="collapse" aria-expanded="false">User Management </a>
+					<ul class="collapse list-unstyled" id="homeSubmenu">
+						<li id="uni_sidebar"><a href="#playWriterSection" data-toggle="tab">Play Writers</a></li>
+						<li id="box_sidebar"><a href="#add_boxes" data-toggle="tab">Dramaturgs</a></li>
+						<li id="scene_sidebar"><a href="#add_scenes" data-toggle="tab">Users</a></li>
+					</ul></li>
+
+				<li id="overUsr"><a href="#add_sceneToBox" data-toggle="tab"
+					style="">Scene Management</a></li>
+
+				<li id="resetPW"><a href="#Winner" data-toggle="tab"
+					style="">Winner</a></li>
+
+				<li id="overUsr"><a href="#SponsorCardSection" data-toggle="tab"
+					style="">Sponsor Card</a></li>
+
+				<li id="overUsr"><a href="#feedback" data-toggle="tab"
+					style="">Feedback</a></li>
+				
+				<li id="overUsr"><a href="#terms" data-toggle="tab"
+					style="">T&C</a></li>
+
+				<li id="overUsr"><a href="#Reports" data-toggle="tab"
+					style="">Reports</a></li>					
+							
+			</ul>
+
+		</nav>
+
+		<!-- Page Content Holder to wrap whole UI according to menu navigation -->
+		
+		<div id="content">
+
+			<div class="container-fluid headerBg">
+				<div class="ptb-10">
+					<div class="row">
+
+						<div class="col-md-1 col-xs-3 text-center">
+
+							<button type="button" id="sidebarCollapse"
+								class="btn btn-info navbar-btn">
+								<i class="glyphicon glyphicon-align-left"></i>
+								<!-- <span>Select Option</span>  -->
+							</button>
+
+						</div>
+
+						<div class="col-md-10 col-xs-6 text-center">
+							<h4 class="portal_heading">Welcome to 12 Line Wonder</h4>
+							<h4 class="admin_name f-roboBold" style="color:#ffffff;">Karen Evans</h4>
+						</div>
+
+						<div class="col-md-1 col-xs-3 text-center">
+							<h5 class="logout_btn">Logout</h5>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+
+
+			<div class=" tab-content">
+
+				<!-- ------------------- =============== SuperAdmin Dashboard Section  ======================= ---------------- -->
+
+				<section id="dashboard" class="tab-pane active">
+					
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="text-center p-15">
+									<h3 class="f-roboBold">Dashboard</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="container">
+						<div class="bordered_div">
+
+							<form>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="">
+											<div class="form-group">
+												<select id="Fetch_UniversityList" name="ListOfUnversity"
+													class="form-control selectpicker" title="">
+													<option hidden>List of Universities</option>
+												</select>
+											</div>
+
+											<div id="fetchBox_List">
+											</div>
+
+										</div>
+
+									</div>
+								</div>
+							</form>
+
+						</div>
+					</div>
+
+					<!-- modal -->
+					<div id="fetchUni_errModal" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+								</div>
+								<div class="modal-body">
+									<p id="Fetch_UniversityErr_msg"></p>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+	    
+	    	  </section>
+
+				<!-- --------------------------- Play Writer Section ------------------------ -->
+
+				<section id="playWriterSection" class="tab-pane">
+
+					<h2>Play Writers</h2>
+
+				</section>
+
+				<!-- ------------------------------- Add Boxes Section ------------------------ -->
+
+				<section id="add_boxes" class="tab-pane">
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="text-center p-15">
+								<h3 class="f-roboBold">Dramaturg</h3>
+							</div>
+						</div>
+					</div>
+
+					<div class="container">
+						<div class="row">
+							<div class=" col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+								<form id="add_box_form">
+
+									<div class="form-group text-center mt-25">
+										<input id="boxName" name="boxName" class="form-control"
+											type="text" placeholder="Box Name" />
+									</div>
+									<div class="form-group text-center">
+										<input id="boxId_android" name="boxId_android"
+											class="form-control" type="text"
+											placeholder="Box Id for Android" />
+									</div>
+									<div class="form-group text-center">
+										<input id="boxId_iOS" name="boxId_iOS" class="form-control"
+											type="text" placeholder="Box Id for iOS" />
+									</div>
+									<div class="text-center mt-25">
+
+										<a id="Add_boxBtn" class="btn btn-default btn-common"
+											role="button" onclick="" style="margin-right: 10px">Save</a>
+										<!-- <a class="btn btn-default btn-common" role="button"
+											onclick="resetBoxForm()">Create New Box</a> -->
+
+									</div>
+
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<!-- modal -->
+					<div id="AddBoxErr_Modal" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+								<div class="modal-body">
+									<p id="AddBoxErr_msg"></p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</section>
+				
+				<!-- ----------------------------- Add Scene Section ------------------------------ -->
+
+				<section id="add_scenes" class="tab-pane">
+					<!-- display scenes div -->
+					<div class="container dispAll_scenes" style="display: block;">
+						<!-- give overflow-x :scroll; -->
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="text-center p-15">
+									<h3 class="f-roboBold">Users</h3>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+
+							<div class="col-xs-6">
+								 <!-- <div id="imaginary_container" class="mt-20">
+									<div class="input-group stylish-input-group height-42">
+										<input type="text" id="myInput" class="form-control height-42"
+											placeholder="Search" onkeyup="myFunction()"> <span
+											class="input-group-addon">
+											<button type="submit">
+												<span class="glyphicon glyphicon-search"></span>
+											</button>
+										</span>
+									</div>
+								</div>  -->
+							</div>
+
+							<div class="col-xs-6 text-right">
+								<a id="nav_addScene" class="btn btn-default btn-common"
+									role="button" onclick="">Add Scene</a>
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="table-responsive table_border">
+									<table id="Admin_SceneList_Table" class="table table-striped  table-responsive" cellspacing="0">
+										<!-- Dynamic table from web service -->
+									</table>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- fetch scene from table error modal -->
+					<div id="" class="fetchTableScene_Err_modal modal fade" role="dialog">
+						<div class="modal-dialog">
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+								<div class="modal-body">
+									<p class="fetchTableSceneErr_msg"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Add scene div toggle on click button add scene -->
+
+					<div class="container addSceneDiv" style="display: none;">
+
+						<div class="row">
+
+							<div class="col-xs-6"></div>
+
+							<div class="col-xs-6 text-right">
+								<a id="backtoSceneList" class="btn btn-default btn-common"
+									role="button" onclick="">Back</a>
+							</div>
+
+						</div>
+
+
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<form id="add_scene_form">
+
+									<div class="panel panel-info">
+
+										<div class="panel-heading">Add Scenes</div>
+
+										<div class="panel-body">
+
+											<div class="row">
+
+												<div class="col-md-2 col-sm-4 col-xs-8">
+
+													<div class="form-group">
+														<label>Title : </label>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+
+													<div class="form-group">
+														<input id="addSceneTitle" name="addSceneTitle"
+															maxlength="" type="text" class="form-control" required
+															autofocus>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12"
+													style="display: none;">
+
+													<small class="error">Please Enter Title</small>
+
+												</div>
+
+											</div>
+
+											<div class="row">
+
+												<div class="col-md-2 col-sm-4 col-xs-8">
+
+													<div class="form-group">
+														<label>Author Name : </label>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+
+													<div class="form-group">
+														<input id="addSceneAuthor" name="addSceneAuthor"
+															maxlength="200" type="text" class="form-control" required
+															autofocus>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12"
+													style="display: none;">
+
+													<small class="error">Please Enter Author Name</small>
+
+												</div>
+
+											</div>
+
+											<div class="row">
+
+												<div class="col-md-2 col-sm-4 col-xs-8">
+
+													<div class="form-group">
+														<label>Time & Place : </label>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+
+													<div class="form-group">
+														<textarea maxlength="140" id="AddScene_timeAndPlace"
+															name="AddScene_timeAndPlace" type="text"
+															class="form-control" required="true" autofocus="true"></textarea>
+														<small id="timeChar1" class=""></small>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12"
+													style="display: none;">
+
+													<small class="error">Please Enter Author Name</small>
+
+												</div>
+
+											</div>
+
+											<div class="row">
+
+												<div class="col-md-2 col-sm-4 col-xs-8">
+
+													<div class="form-group">
+														<label>Whisper/Description : </label>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="addSceneChar1" name="addSceneChar1"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="whisper1" name="whisper1"
+														class="form-control" placeholder="Enter Dialog 1"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="whisperChar1" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="whisp2" class="row"
+												style="margin-top: 2%; display: none;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="addSceneChar2" name="addSceneChar2"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="whisper2" name="whisper2"
+														class="form-control" placeholder="Enter Dialog 2"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="whisperChar2" class=""></small>
+												</div>
+
+
+											</div>
+
+											<div id="whisp3" class="row"
+												style="margin-top: 2%; display: none;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="addSceneChar3" name="addSceneChar3"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="whisper3" name="whisper3"
+														class="form-control" placeholder="Enter Dialog 3"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="whisperChar3" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="whisp4" class="row"
+												style="margin-top: 2%; display: none;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="addSceneChar4" name="addSceneChar4"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="whisper4" name="whisper4"
+														class="form-control" placeholder="Enter Dialog 4"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="whisperChar4" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="whisp5" class="row"
+												style="margin-top: 2%; display: none;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="addSceneChar5" name="addSceneChar5"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="whisper5" name="whisper5"
+														class="form-control" placeholder="Enter Dialog 5"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="whisperChar5" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="whisp6" class="row"
+												style="margin-top: 2%; display: none;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="addSceneChar6" name="addSceneChar6"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="whisper6" name="whisper6"
+														class="form-control" placeholder="Enter Dialog 6"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="whisperChar6" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="whisp7" class="row"
+												style="margin-top: 2%; display: none;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="addSceneChar7" name="addSceneChar7"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="whisper7" name="whisper7"
+														class="form-control" placeholder="Enter Dialog 7"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="whisperChar7" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="whisp8" class="row"
+												style="margin-top: 2%; display: none;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="addSceneChar8" name="addSceneChar8"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="whisper8" name="whisper8"
+														class="form-control" placeholder="Enter Dialog 8"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="whisperChar8" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="whisp9" class="row"
+												style="margin-top: 2%; display: none;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="addSceneChar9" name="addSceneChar9"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="whisper9" name="whisper9"
+														class="form-control" placeholder="Enter Dialog 9"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="whisperChar9" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="whisp10" class="row"
+												style="margin-top: 2%; display: none;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="addSceneChar10" name="addSceneChar10"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="whisper10" name="whisper10"
+														class="form-control" placeholder="Enter Dialog 10"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="whisperChar10" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="whisp11" class="row"
+												style="margin-top: 2%; display: none;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="addSceneChar11" name="addSceneChar11"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="whisper11" name="whisper11"
+														class="form-control" placeholder="Enter Dialog 11"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="whisperChar11" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="whisp12" class="row"
+												style="margin-top: 2%; display: none;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="addSceneChar12" name="addSceneChar12"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="whisper12" name="whisper12"
+														class="form-control" placeholder="Enter Dialog 12"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="whisperChar12" class=""></small>
+												</div>
+
+											</div>
+
+											<div class="row">
+
+												<div class="col-xs-12 text-right">
+													<a id="Btn_Nextwhisper" class="btn btn-default btn-common"
+														role="button" onclick="">Add Next Dialog</a>
+												</div>
+
+											</div>
+
+											<div class="row">
+
+												<div class="col-sm-6 col-xs-12">
+
+													<div class="file-SceneImg mt-15 form-group">
+														<input id="add_sceneImg" name="add_sceneImg"
+															class="form-control" type="file" accept="image/*" style="display: none;">
+														<p id="addSceneFileName" class="file-uploadSceneImg">Add
+															scene image..</p>
+													</div>
+
+													<div class="form-group">
+														<label id="upload_SceneImg"
+															class="btn btn-default btn-common" for="add_sceneImg"
+															role="button" onclick="">Browse</label>
+													</div>
+
+												</div>
+
+											</div>
+
+											<div class="text-center">
+												<button id="SceneSaveBtn" class="btn btn-default btn-common"
+													onclick="">Save</button>
+												<a class="btn btn-default btn-common" role="button"
+													onclick="resetSceneForm()">Reset</a>
+											</div>
+
+										</div>
+									</div>
+
+								</form>
+							</div>
+						</div>
+
+					</div>
+					<!-- --------------------- Review and Edit Scene UI toggle click on web service button ---------------------- -->
+					<div class="container reviewSceneDiv" style="display: none;">
+
+
+						<div class="row">
+
+							<div class="col-xs-6"></div>
+
+							<div class="col-xs-6 text-right">
+								<a id="backtoSceneList_fromReview"
+									class="btn btn-default btn-common" role="button" onclick="" style="margin-bottom:20px;">Back</a>
+							</div>
+
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<form id="edit_scene_form">
+
+									<div class="panel panel-info">
+
+										<div class="panel-heading">Add Scenes</div>
+
+										<div class="panel-body">
+
+											<div class="row">
+
+												<div class="col-md-2 col-sm-4 col-xs-8">
+
+													<div class="form-group">
+														<label>Title : </label>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+
+													<div class="form-group">
+														<input id="EditSceneTitle" name="EditSceneTitle"
+															maxlength="" type="text" class="form-control" required
+															autofocus>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12"
+													style="display: none;">
+
+													<small class="error">Please Enter Title</small>
+
+												</div>
+
+											</div>
+
+											<div class="row">
+
+												<div class="col-md-2 col-sm-4 col-xs-8">
+
+													<div class="form-group">
+														<label>Author Name : </label>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+
+													<div class="form-group">
+														<input id="editSceneAuthor" name="editSceneAuthor"
+															maxlength="200" type="text" class="form-control" required
+															autofocus>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12"
+													style="display: none;">
+
+													<small class="error">Please Enter Author Name</small>
+
+												</div>
+
+											</div>
+
+											<div class="row">
+
+												<div class="col-md-2 col-sm-4 col-xs-8">
+
+													<div class="form-group">
+														<label>Time & Place : </label>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+
+													<div class="form-group">
+														<textarea maxlength="140" id="EditScene_timeAndPlace"
+															name="EditScene_timeAndPlace" type="text"
+															class="form-control" required="true" autofocus="true"></textarea>
+														<small id="edit_timeChar" class=""></small>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12"
+													style="display: none;">
+
+													<small class="error">Please Enter Author Name</small>
+
+												</div>
+
+											</div>
+
+											<div id="editwhisp1" class="row">
+
+												<div class="col-md-2 col-sm-4 col-xs-8">
+
+													<div class="form-group">
+														<label>Whisper/Description : </label>
+													</div>
+
+												</div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="editSceneChar1" name="editSceneChar1"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="edit_whisper1" name="edit_whisper1"
+														class="form-control" placeholder="Enter Dialog 1"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="editwhisperChar1" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="editwhisp2" class="row"
+												style="margin-top: 2%;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="editSceneChar2" name="editSceneChar2"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="edit_whisper2" name="edit_whisper2"
+														class="form-control" placeholder="Enter Dialog 2"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="editwhisperChar2" class=""></small>
+												</div>
+
+
+											</div>
+
+											<div id="editwhisp3" class="row"
+												style="margin-top: 2%;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="editSceneChar3" name="editSceneChar3"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="edit_whisper3" name="edit_whisper3"
+														class="form-control" placeholder="Enter Dialog 3"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="editwhisperChar3" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="editwhisp4" class="row"
+												style="margin-top: 2%; ">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="editSceneChar4" name="editSceneChar4"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="edit_whisper4" name="edit_whisper4"
+														class="form-control" placeholder="Enter Dialog 4"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="editwhisperChar4" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="editwhisp5" class="row"
+												style="margin-top: 2%;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="editSceneChar5" name="editSceneChar5"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="edit_whisper5" name="edit_whisper5"
+														class="form-control" placeholder="Enter Dialog 5"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="editwhisperChar5" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="editwhisp6" class="row"
+												style="margin-top: 2%; ">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="editSceneChar6" name="editSceneChar6"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="edit_whisper6" name="edit_whisper6"
+														class="form-control" placeholder="Enter Dialog 6"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="editwhisperChar6" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="editwhisp7" class="row"
+												style="margin-top: 2%;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="editSceneChar7" name="editSceneChar7"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="edit_whisper7" name="edit_whisper7"
+														class="form-control" placeholder="Enter Dialog 7"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="editwhisperChar7" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="editwhisp8" class="row"
+												style="margin-top: 2%; ">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="editSceneChar8" name="editSceneChar8"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="edit_whisper8" name="edit_whisper8"
+														class="form-control" placeholder="Enter Dialog 8"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="editwhisperChar8" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="editwhisp9" class="row"
+												style="margin-top: 2%; ">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="editSceneChar9" name="editSceneChar9"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="edit_whisper9" name="edit_whisper9"
+														class="form-control" placeholder="Enter Dialog 9"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="editwhisperChar9" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="editwhisp10" class="row"
+												style="margin-top: 2%; ">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="editSceneChar10" name="editSceneChar10"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="edit_whisper10" name="edit_whisper10"
+														class="form-control" placeholder="Enter Dialog 10"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="editwhisperChar10" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="editwhisp11" class="row"
+												style="margin-top: 2%;">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="editSceneChar11" name="editSceneChar11"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="edit_whisper11" name="edit_whisper11"
+														class="form-control" placeholder="Enter Dialog 11"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="editwhisperChar11" class=""></small>
+												</div>
+
+											</div>
+
+											<div id="editwhisp12" class="row"
+												style="margin-top: 2%; ">
+
+												<div class="col-md-2 col-sm-4 col-xs-8"></div>
+
+												<div class="col-md-3 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<input id="editSceneChar12" name="editSceneChar12"
+															class="form-control" type="text"
+															placeholder="Enter Character Name" maxlength="200">
+													</div>
+												</div>
+
+												<div class="col-md-6 col-sm-4 col-xs-12">
+													<textarea id="edit_whisper12" name="edit_whisper12"
+														class="form-control" placeholder="Enter Dialog 12"
+														required="" autofocus="" maxlength="140"></textarea>
+													<small id="editwhisperChar12" class=""></small>
+												</div>
+
+											</div>
+
+											<!-- <div class="row">
+
+												<div class="col-xs-12 text-right">
+													<a id="Btn_Nextwhisper" class="btn btn-default btn-common"
+														role="button" onclick="">Add Next Whisper</a>
+												</div>
+
+											</div> -->
+											
+											<div class="row">
+												<div class="col-md-8 col-md-offset-2 col-xs-12">
+													<div class="text-center" style="margin-top:20px;">
+														<img id="edit_sceneImg" class="img-responsive" src="" style="display:inline-block;">
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+
+												<div class="col-sm-6 col-xs-12">
+
+													<div class="file-SceneImg1 mt-15 form-group">
+														<input id="edit_sceneImgName" name="edit_sceneImgName"
+															class="form-control" type="file" accept="image/*" style="display: none;">
+														<p id="editSceneFileName" class="file-uploadSceneImg1">Add
+															scene image..</p>
+													</div>
+
+													<div class="form-group">
+														<label id="upload_EditedSceneImg"
+															class="btn btn-default btn-common" for="edit_sceneImgName"
+															role="button" onclick="">Browse</label>
+													</div>
+
+												</div>
+
+											</div>
+
+											<div class="text-center">
+												<button id="edit_SceneSaveBtn" class="btn btn-default btn-common"
+													onclick="">Save</button>
+												<!-- <a class="btn btn-default btn-common" role="button"
+													onclick="resetEditSceneForm()">Reset</a> -->
+											</div>
+
+										</div>
+									</div>
+
+								</form>
+							</div>
+						</div>						
+						
+						
+
+					</div>
+
+
+
+					<!-- ------------- Add Lesson div toggle on click on add lesson plan button  ------------------->
+
+					<div class="container add_lessonDiv" style="display:none;">
+
+						<div class="row">
+
+							<div class="col-xs-6"></div>
+
+							<div class="col-xs-6 text-right">
+								<a id="backtoDynamic_table" class="btn btn-default btn-common"
+									role="button" onclick="">Back</a>
+							</div>
+
+						</div>
+
+						<form id="add_lessonDivform" class="mt-25">
+
+							<div class="row">
+
+								<div class="col-md-12 col-sm-12 col-xs-12">
+
+
+									<div class="panel panel-info">
+
+										<div class="panel-heading" style="/* padding: 10px 10px 31px 10px; */">Add Lesson Plan
+										
+<!-- 											<a id="addQuestionToLessonPlan" class="btn btn-default btn-common pull-right" role="button" onclick="" style="margin-top: 0px;">Add New</a>
+ -->										
+										</div>
+
+										<div class="panel-body">
+
+											<div class="row">
+
+												<div class="col-md-4 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<label>Discussion Question :</label>
+													</div>
+												</div>
+
+												<div class="col-md-4 col-sm-4 col-xs-12">
+
+													<div class="form-group file-QuesUpload">
+														<input id="DiscussQues_pdf" name="DiscussQues_pdf"
+															type="file" accept=".pdf" style="display: none;" />
+														<p id="discussQues_fileName" class="file-discussQues">
+															Import Pdf...</p>
+													</div>
+
+													<div class="form-group">
+														<label id="upload_QuesFile"
+															class="btn btn-default btn-common" for="DiscussQues_pdf"
+															role="button" onclick="">Browse</label>
+													</div>
+
+												</div>
+
+												<div class="col-md-4 col-sm-4 col-xs-12">
+
+													<div class="form-group file-QA-Upload">
+														<input id="DiscussQA_pdf" name="DiscussQA_pdf" type="file"
+															accept=".pdf" style="display: none;" />
+														<p id="discussQA_fileName" class="file-discussQA">Import
+															Pdf With Answers..</p>
+													</div>
+
+													<div class="form-group">
+														<label id="upload_QAFile"
+															class="btn btn-default btn-common" for="DiscussQA_pdf"
+															role="button" onlick="">Browse</label>
+													</div>
+
+												</div>
+
+											</div>
+
+											<div class="mt-25" id="lpQuestionsDiv">
+												<div id="lpQuestionDiv-1">
+													<div class="row">
+														<div class="col-md-2 col-sm-2 col-xs-12">
+															<div class="form-group">
+																<label>Question :</label>
+															</div>
+														</div>
+														<div class="col-md-4 col-sm-4 col-xs-12">
+															<div class="form-group">
+																<input id="lpQue-1" name="" class="form-control lpQuestions" type="text"
+																	placeholder="Question" required>
+															</div>
+														</div>
+														<div class="col-md-2 col-sm-2 col-xs-12">
+															<div class="form-group">
+																<label>Answer :</label>
+															</div>
+														</div>
+														<div class="col-md-4 col-sm-4 col-xs-12">
+															<div class="form-group">
+																<input id="lpAns-1" name="" class="form-control lpAnswers" type="text"
+																	placeholder="Answer" required>
+															</div>
+														</div>
+													</div>
+													<div id="lpQue-1-optionDiv">
+													</div>
+													<div>
+														<a id="addOption-1" class="btn btn-default btn-common addOptionClass"
+														role="button" onclick="">Add Option</a>
+													</div>
+												</div>	
+											</div>
+
+											<!--<div class="option_Div">
+
+												<div class="row mt-25">
+													<div class="col-md-2 col-sm-2 col-xs-12">
+														<div class="form-group">
+															<label>Option :</label>
+														</div>
+													</div>
+
+													<div class="col-md-4 col-sm-4 col-xs-12">
+														<div class="form-group">
+															<input id="" name="" class="form-control" type="text">
+														</div>
+													</div>
+
+													<div class="col-md-6 hidden-sm hidden-xs"></div>
+												</div>
+
+											</div>
+
+											<div>
+												<a id="add_optionBtn" class="btn btn-default btn-common"
+													role="button" onclick="">Add Option</a>
+											</div>-->
+											
+											<div class="text-center">
+												<a id="addQuestionToLessonPlan" class="btn btn-default btn-common " role="button" onclick="" style="margin-top: 0px;">Add New Question</a>
+											</div>
+											
+											<div class="text-center">
+												<a id="saveLessonPlan" class="btn btn-default btn-common" role="button"
+													onclick="">Save</a>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</form>
+
+					</div>
+
+					<!-- ------------------------------------------ View lesson <div> on toggle click on view lesson plan  ------------------------------------------------- -->
+
+					<div class="container view_lessonDiv" style="display:none;">
+
+						<div class="row">
+							<div class="col-xs-6"></div>
+
+							<div class="col-xs-6 text-right">
+								<a id="navtoDynamic_table" class="btn btn-default btn-common"
+									role="button" onclick="">Back</a>
+							</div>
+						</div>
+
+						<form id="" class="mt-25">
+
+							<div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+
+									<div class="panel panel-info">
+
+										<div class="panel-heading">View Lesson Plan</div>
+
+										<div class="panel-body">
+
+											<div class="row">
+												<div class="col-md-4 col-sm-4 col-xs-12">
+													<div class="form-group">
+														<label>Discussion Question :</label>
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-4 col-xs-12">
+													<div style="margin-bottom:10px;">
+														<a id="fetch_pdfQues" target="_blank" href="">Click to view pdf..
+														</a>
+													</div>
+
+													<div class="form-group file-QuesUploadEdit">
+														<input id="DiscussQuespdf_Edit" name="DiscussQuespdf_Edit"
+															type="file" accept=".pdf" style="display: none;" />
+															
+														<p id="discussQues_fileName1" class="file-discussQuesEdit">
+															Edit Pdf...</p>
+													</div>
+
+													<div class="form-group">
+														<label id="upload_QuesFile"
+															class="btn btn-default btn-common"
+															for="DiscussQuespdf_Edit" role="button" onclick="">Browse</label>
+													</div>
+
+												</div>
+												<div class="col-md-4 col-sm-4 col-xs-12">
+													
+													<div style="margin-bottom:10px;">
+													<a id="fetch_pdfQuesAnswer" target="_blank" href="">Click to view pdf..
+													</a>
+													</div>	
+													
+													<div class="form-group file-QA-UploadEdit">
+														<input id="DiscussQA_pdfEdit" name="DiscussQA_pdfEdit"
+															type="file" accept=".pdf" style="display: none;" />
+																
+														<p id="discussQA_fileName1" class="file-discussQA-Edit">Edit
+															Pdf With Answers..</p>
+													</div>
+
+													<div class="form-group">
+														<label id="upload_QAFile"
+															class="btn btn-default btn-common"
+															for="DiscussQA_pdfEdit" role="button" onclick="">Browse</label>
+													</div>
+
+												</div>
+											</div>
+											
+											<div class="text-center">
+												<a id="Edit_QAInfoBtn" class="btn btn-default btn-common"
+													role="button" onclick="">Save Pdf</a>
+											</div>
+
+											<div class="table-responsive table_border">
+												<table id="Table_viewLessonPlan" class="table table-striped  table-responsive" cellspacing="0">
+												</table>
+											</div>
+
+											<!-- <div class="text-center">
+												<a id="Edit_QAInfoBtn" class="btn btn-default btn-common"
+													role="button" onclick="">Save</a>
+											</div> -->
+
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+
+						</form>
+
+					</div>
+					
+					<!-- --- Edit question div  ---- -->
+					
+					<div class="container editQuestionDiv" style="display:none;">
+					
+						<div class="row">
+							<div class="col-xs-6"></div>
+
+							<div class="col-xs-6 text-right">
+								<a id="backToViewLessonBtn" class="btn btn-default btn-common"
+									role="button" onclick="">Back</a>
+							</div>
+						</div>
+						
+							<form id="" class="mt-25">
+							
+								<div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+
+									<div class="panel panel-info">
+										
+										<div class="panel-heading">Edit Questions</div>
+										
+										<div class="panel-body">
+											
+											
+											<div class="mt-25" id="">
+												<div id="Edit_lessonDiv">
+													<div class="row">
+														<div class="col-md-2 col-sm-2 col-xs-12">
+															<div class="form-group">
+																<label>Question :</label>
+															</div>
+														</div>
+														<div class="col-md-4 col-sm-4 col-xs-12">
+															<div class="form-group">
+																<input id="Edit_question" name="Edit_question" class="form-control " type="text"
+																	placeholder="Question" required>
+															</div>
+														</div>
+														<div class="col-md-2 col-sm-2 col-xs-12">
+															<div class="form-group">
+																<label>Answer :</label>
+															</div>
+														</div>
+														<div class="col-md-4 col-sm-4 col-xs-12">
+															<div class="form-group">
+																<input id="Edit_answer" name="Edit_answer" class="form-control" type="text"
+																	placeholder="Answer" required>
+															</div>
+														</div>
+													</div>
+													
+													
+													<div id="edit_option">
+														
+													</div>
+													
+													<div>
+														<a id="" class="btn btn-default btn-common addMoreOptionClass" role="button" onclick="">Add Option</a>
+													</div>
+												</div>
+												
+												<div class="text-center">
+												<a id="Edit_QuestionButton" class="btn btn-default btn-common"
+													role="button" onclick="">Save</a>
+												</div>
+												
+											</div>
+												
+											
+											
+										</div>
+										
+									</div>
+									
+								</div>
+								</div>	
+							
+							</form>
+					
+					</div>
+
+					
+					<!-- add scene error modal -->
+					<div id="AddSceneErr_Modal" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+								</div>
+								<div class="modal-body">
+									<p id="AddSceneErr_msg"></p>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+					
+					
+				</section>
+				<!-- -----------------------  Add Scenes to Boxes section ----------------------------- -->
+
+				<section id="add_sceneToBox" class="tab-pane">
+
+					<div class="container">
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="text-center p-15">
+									<h3 class="f-roboBold">Scenes</h3>
+									<h4>Select scenes you want to include in particular box and then just click on Box name.</h4>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-10 col-sm-offset-1">
+
+								<div class="bordered_div">
+
+									<div class="row ">
+
+										<div class="col-sm-6">
+											<div class="text-left">
+												<div class="panel panel-info">
+													<div class="panel-heading">List of Scenes</div>
+													
+													<!-- <a id="SelectAllScenesBtn"
+														class="btn btn-default btn-common" role="button"
+														onclick="">Select All</a> -->
+													
+													<div id="append_scenes" class="panel-body">
+														<!-- Display scene from web service data -->
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-sm-6">
+											<div class="text-left">
+												<div class="panel panel-info">
+													<div class="panel-heading">List of Boxes</div>
+
+													<div id="append_boxes" class="panel-body">
+														<!-- added box by web service -->
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+					<!-- Fetch box error modal -->
+
+					<div id="FetchBoxes_Err_Modal1" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+								</div>
+
+								<div class="modal-body">
+									<p id="FetchBoxes_Err_msg1"></p>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+
+
+				</section>
+				
+
+
+	<!-- --------------------------- winner Section ------------------------ -->
+
+				<section id="Winner" class="tab-pane">
+
+				<h2>winner</h2>
+
+				</section>	
+
+	<!-- --------------------------- SponsorCardSection Section ------------------------ -->
+
+
+				<section id="SponsorCardSection" class="tab-pane">
+
+				<h2>SponsorCardSection</h2>
+
+				</section>	
+
+	<!-- --------------------------- feedback Section ------------------------ -->
+
+				<section id="feedback" class="tab-pane">
+
+				<h2>feedback</h2>
+
+				</section>	
+
+	<!-- --------------------------- T&C Section ------------------------ -->
+ 
+
+				<section id="terms" class="tab-pane">
+
+				<h2>T&C</h2>
+
+				</section>
+
+	<!-- --------------------------- Reports Section ------------------------ -->
+
+				<section id="Reports" class="tab-pane">
+
+				<h2>Reports</h2>
+
+				</section>
+
+
+
+	<div class="overlay"></div>
+
+	<!-- <div id="loading" style="display:none;"></div> -->
+
+	<!-- jQuery CDN -->
+	<!-- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
+	<script src="js/jquery-2.2.4.min.js"></script>
+	<!-- Bootstrap Js CDN -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- jQuery Custom Scroller CDN -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/superAdmin.js"></script>
+	<style>
+.stylish-input-group .input-group-addon {
+	background: white !important;
+}
+
+.stylish-input-group .form-control {
+	border-right: 0;
+	box-shadow: 0 0 0;
+	border-color: #ccc;
+}
+
+.stylish-input-group button {
+	border: 0;
+	background: transparent;
+}
+
+.loading {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	display: block;
+	opacity: 0.7;
+	background-color: #fff;
+	z-index: 99;
+	text-align: center;
+	background: url(images/ajax-loader.gif) 50% 50% no-repeat
+		rgba(0, 0, 0, 0.6);
+}
+</style>
+
+<script type="text/javascript">
+		$(document).ready(function() {
+					$("#sidebar").mCustomScrollbar({
+						theme : "minimal"
+					});
+
+					$('#dismiss, .overlay').on('click', function() {
+						$('#sidebar').removeClass('active');
+						$('.overlay').fadeOut();
+					});
+
+					$('#sidebarCollapse').on(
+							'click',
+							function() {
+								/* 	 $('#sidebar').toggleClass('active');  */
+								$('#sidebar').addClass('active');
+								$('.overlay').fadeIn();
+								$('.collapse.in').toggleClass('in');
+								$('a[aria-expanded=true]').attr(
+										'aria-expanded', 'false');
+							});
+
+					$('#sidebar a').on(
+							'click',
+							function(e) {
+								$('#sidebar a[aria-expanded=true]').attr(
+										'aria-expanded', 'false');
+								$('#sidebar li').removeClass('active');
+								if ($(this).attr("data-toggle") == "tab") {
+									window.setTimeout(
+											function() {
+												$(this).parent("li").addClass(
+														'active');
+											}, 500);
+								}
+							});
+				});
+
+		$('#calibration_Nav a').on(
+				'click',
+				function() {
+					$('#QCd_Nav ul').removeClass('in').attr('aria-expanded',
+							'false');
+					$('#Prod_Nav ul').removeClass('in').attr('aria-expanded',
+							'false');
+					$('#servD_Nav ul').removeClass('in').attr('aria-expanded',
+							'false');
+					$('#MarketD_Nav ul').removeClass('in').attr(
+							'aria-expanded', 'false');
+				});
+
+		$('#QCd_Nav a').on(
+				'click',
+				function() {
+					$('#calibration_Nav ul').removeClass('in').attr(
+							'aria-expanded', 'false');
+					$('#Prod_Nav ul').removeClass('in').attr('aria-expanded',
+							'false');
+					$('#servD_Nav ul').removeClass('in').attr('aria-expanded',
+							'false');
+					$('#MarketD_Nav ul').removeClass('in').attr(
+							'aria-expanded', 'false');
+				});
+
+		$('#Prod_Nav a').on(
+				'click',
+				function() {
+					$('#calibration_Nav ul').removeClass('in').attr(
+							'aria-expanded', 'false');
+					$('#QCd_Nav ul').removeClass('in').attr('aria-expanded',
+							'false');
+					$('#servD_Nav ul').removeClass('in').attr('aria-expanded',
+							'false');
+					$('#MarketD_Nav ul').removeClass('in').attr(
+							'aria-expanded', 'false');
+				});
+
+		$('#servD_Nav a').on(
+				'click',
+				function() {
+					$('#calibration_Nav ul').removeClass('in').attr(
+							'aria-expanded', 'false');
+					$('#QCd_Nav ul').removeClass('in').attr('aria-expanded',
+							'false');
+					$('#Prod_Nav ul').removeClass('in').attr('aria-expanded',
+							'false');
+					$('#MarketD_Nav ul').removeClass('in').attr(
+							'aria-expanded', 'false');
+				});
+
+		$('#MarketD_Nav a').on(
+				'click',
+				function() {
+					$('#calibration_Nav ul').removeClass('in').attr(
+							'aria-expanded', 'false');
+					$('#QCd_Nav ul').removeClass('in').attr('aria-expanded',
+							'false');
+					$('#Prod_Nav ul').removeClass('in').attr('aria-expanded',
+							'false');
+					$('#servD_Nav ul').removeClass('in').attr('aria-expanded',
+							'false');
+				});
+	</script>
+
+	<script>
+		function resetUniForm() {
+			document.getElementById("add_university_form").reset();
+		}
+		function resetBoxForm() {
+			document.getElementById("add_box_form").reset();
+		}
+		function resetSceneForm() {
+			document.getElementById("add_scene_form").reset();
+			$("#addSceneFileName").text('Add scene image..');
+		}
+		
+		$('#nav_addScene').on('click', function() {
+			$('.dispAll_scenes').css({
+				"display" : "none"
+			});
+			$('.addSceneDiv').css({
+				"display" : "block"
+			});
+		});
+		$('#backtoSceneList').on('click', function() {
+			$('.addSceneDiv').css({
+				"display" : "none"
+			});
+			$('.dispAll_scenes').css({
+				"display" : "block"
+			});
+		});
+
+		var current_step = 1;
+		var max_number_of_steps = 12;
+		$('#Btn_Nextwhisper').click(function() {
+			var next_step = current_step + 1;
+			$('#whisp' + next_step).slideDown();
+			current_step++; // increase the steps of Whisper
+			if (current_step == max_number_of_steps) {
+				$('#Btn_Nextwhisper').hide();
+			}
+		});
+	</script>
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var text_max = 140;
+			
+			$("#timeChar1").html(text_max + ' left');
+			$('#AddScene_timeAndPlace').keyup(function() {
+				var text_length = $('#AddScene_timeAndPlace').val().length;
+				var text_remaining = text_max - text_length;
+				$('#timeChar1').html(text_remaining + ' left');
+			});
+			
+			$('#whisperChar1').html(text_max + ' left');
+			$('#whisper1').keyup(function() {
+				var text_length = $('#whisper1').val().length;
+				var text_remaining = text_max - text_length;
+				$('#whisperChar1').html(text_remaining + ' left');
+			});
+
+			$('#whisperChar2').html(text_max + ' left');
+			$('#whisper2').keyup(function() {
+				var text_length = $('#whisper2').val().length;
+				var text_remaining = text_max - text_length;
+				$('#whisperChar2').html(text_remaining + ' left');
+			});
+
+			$('#whisperChar3').html(text_max + ' left');
+			$('#whisper3').keyup(function() {
+				var text_length = $('#whisper3').val().length;
+				var text_remaining = text_max - text_length;
+				$('#whisperChar3').html(text_remaining + ' left');
+			});
+
+			$('#whisperChar4').html(text_max + ' left');
+			$('#whisper4').keyup(function() {
+				var text_length = $('#whisper4').val().length;
+				var text_remaining = text_max - text_length;
+				$('#whisperChar4').html(text_remaining + ' left');
+			});
+
+			$('#whisperChar5').html(text_max + ' left');
+			$('#whisper5').keyup(function() {
+				var text_length = $('#whisper5').val().length;
+				var text_remaining = text_max - text_length;
+				$('#whisperChar5').html(text_remaining + ' left');
+			});
+
+			$('#whisperChar6').html(text_max + ' left');
+			$('#whisper6').keyup(function() {
+				var text_length = $('#whisper6').val().length;
+				var text_remaining = text_max - text_length;
+				$('#whisperChar6').html(text_remaining + ' left');
+			});
+
+			$('#whisperChar7').html(text_max + ' left');
+			$('#whisper7').keyup(function() {
+				var text_length = $('#whisper7').val().length;
+				var text_remaining = text_max - text_length;
+				$('#whisperChar7').html(text_remaining + ' left');
+			});
+
+			$('#whisperChar8').html(text_max + ' left');
+			$('#whisper8').keyup(function() {
+				var text_length = $('#whisper8').val().length;
+				var text_remaining = text_max - text_length;
+				$('#whisperChar8').html(text_remaining + ' left');
+			});
+
+			$('#whisperChar9').html(text_max + ' left');
+			$('#whisper9').keyup(function() {
+				var text_length = $('#whisper9').val().length;
+				var text_remaining = text_max - text_length;
+				$('#whisperChar9').html(text_remaining + ' left');
+			});
+
+			$('#whisperChar10').html(text_max + ' left');
+			$('#whisper10').keyup(function() {
+				var text_length = $('#whisper10').val().length;
+				var text_remaining = text_max - text_length;
+				$('#whisperChar10').html(text_remaining + ' left');
+			});
+
+			$('#whisperChar11').html(text_max + ' left');
+			$('#whisper11').keyup(function() {
+				var text_length = $('#whisper11').val().length;
+				var text_remaining = text_max - text_length;
+				$('#whisperChar11').html(text_remaining + ' left');
+			});
+
+			$('#whisperChar12').html(text_max + ' left');
+			$('#whisper12').keyup(function() {
+				var text_length = $('#whisper12').val().length;
+				var text_remaining = text_max - text_length;
+				$('#whisperChar12').html(text_remaining + ' left');
+			});
+       
+			
+			
+		});
+		
+ 	
+	</script>
+	<script type="text/javascript">
+		jQuery(function($) {
+			$('input[type="file"]')
+					.change(
+							function() {
+								if ($(this).val()) {
+									error = false;
+
+									var filename = $(this).val().replace(
+											/.*(\/|\\)/, '');
+
+									$(this).closest('.file-QuesUpload').find(
+											'.file-discussQues').html(filename)
+											.attr("title", filename);
+
+									if (error) {
+										parent.addClass('error').prepend
+												.after('<div class="alert alert-error">'
+														+ error + '</div>');
+									}
+								}
+							});
+		});
+
+		jQuery(function($) {
+			$('input[type="file"]')
+					.change(
+							function() {
+								if ($(this).val()) {
+									error = false;
+
+									var filename = $(this).val().replace(
+											/.*(\/|\\)/, '');
+
+									$(this).closest('.file-QA-Upload').find(
+											'.file-discussQA').html(filename)
+											.attr("title", filename);
+
+									if (error) {
+										parent.addClass('error').prepend
+												.after('<div class="alert alert-error">'
+														+ error + '</div>');
+									}
+								}
+							});
+		});
+
+		jQuery(function($) {
+			$('input[type="file"]')
+					.change(
+							function() {
+								if ($(this).val()) {
+									error = false;
+
+									var filename = $(this).val().replace(
+											/.*(\/|\\)/, '');
+
+									$(this).closest('.file-SceneImg').find(
+											'.file-uploadSceneImg').html(
+											filename).attr("title", filename);
+
+									if (error) {
+										parent.addClass('error').prepend
+												.after('<div class="alert alert-error">'
+														+ error + '</div>');
+									}
+								}
+							});
+		});
+		
+		jQuery(function($) {
+			$('input[type="file"]').change(
+				function() {
+					if ($(this).val()) {
+						error = false;
+						
+						//$("#edit_sceneImg").attr('src',$(this).val());
+						
+						var filename = $(this).val().replace(/.*(\/|\\)/, '');
+										
+						$(this).closest('.file-SceneImg1').find('.file-uploadSceneImg1').html(filename).attr("title", filename);
+
+						if (error) {
+							parent.addClass('error').prepend.after('<div class="alert alert-error">'+ error + '</div>');
+						}
+					}
+				});
+		});
+		
+		jQuery(function($) {
+			$('input[type="file"]').change(
+				function() {
+					if ($(this).val()) {
+						error = false;
+						
+						//$("#edit_sceneImg").attr('src',$(this).val());
+						
+						var filename = $(this).val().replace(/.*(\/|\\)/, '');
+										
+						$(this).closest('.file-SceneImg1').find('.file-uploadSceneImg1').html(filename).attr("title", filename);
+
+						if (error) {
+							parent.addClass('error').prepend.after('<div class="alert alert-error">'+ error + '</div>');
+						}
+					}
+				});
+		});
+		
+		
+		jQuery(function($) {
+			$('input[type="file"]').change(
+				function() {
+					if ($(this).val()) {
+						error = false;
+						
+						//$("#edit_sceneImg").attr('src',$(this).val());
+						
+						var filename = $(this).val().replace(/.*(\/|\\)/, '');
+										
+						$(this).closest('.file-QuesUploadEdit').find('.file-discussQuesEdit').html(filename).attr("title", filename);
+
+						if (error) {
+							parent.addClass('error').prepend.after('<div class="alert alert-error">'+ error + '</div>');
+						}
+					}
+				});
+		});    
+		
+		
+		jQuery(function($) {
+			$('input[type="file"]').change(
+				function() {
+					if ($(this).val()) {
+						error = false;
+						
+						//$("#edit_sceneImg").attr('src',$(this).val());
+						
+						var filename = $(this).val().replace(/.*(\/|\\)/, '');
+										
+						$(this).closest('.file-QA-UploadEdit').find('.file-discussQA-Edit').html(filename).attr("title", filename);
+
+						if (error) {
+							parent.addClass('error').prepend.after('<div class="alert alert-error">'+ error + '</div>');
+						}
+					}
+				});
+		});
+		
+		
+		/* $("#upload_EditedSceneImg").on('click',function(){
+			var image_review = $("#edit_sceneImgName").val();
+			$("#edit_sceneImg").attr('src',image_review);
+		}); */
+		
+	</script>
+</body>
+</html>
